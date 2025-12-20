@@ -1,3 +1,8 @@
+## 2.0.1
+- Updated plugin configuration to Android-only
+- Removed iOS and macOS platform declarations (not supported)
+- Clarified documentation for Android-specific functionality
+
 ## 2.0.0
 - Fixed Gradle configuration for Android builds
 - Updated to support latest Flutter versions

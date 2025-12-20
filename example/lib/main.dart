@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:raw_gnss_2025/gnss_measurement_model.dart';
 import 'package:raw_gnss_2025/gnss_status_model.dart';
 import 'package:raw_gnss_2025/raw_gnss.dart';
 
@@ -60,55 +61,12 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   @override
-  Widget build(BuildContext context) => _hasPermissions
-      ? StreamBuilder<GnssStatusModel>(
-          stream: _gnss.gnssStatusEvents,
-          builder: (context, snapshot) {
-            if (!snapshot.hasData) {
-              return _timedOut ? _noFixHelp() : _loadingSpinner();
-            }
-
-            final model = snapshot.data!;
-            final count = model.satelliteCount ?? 0;
-            final lresultJSON = model.toJson();
-            debugPrint('GNSS event received: satelliteCount=$count');
-            debugPrint('GNSS event received: json=$lresultJSON');
-
-            return Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  child: Row(
-                    children: [
-                      Chip(label: Text('Satellites: $count')),
-                    ],
-                  ),
-                ),
-                const Divider(height: 1),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: count,
-                    itemBuilder: (context, position) {
-                      return ListTile(
-                        title: Column(
-                          children: [
-                            Text(
-                              "position: $position",
-                            ),
-                            
-                            Text(
-                              "json: ${model.status![position].toJson()}",
-                            ), 
-                          ],
-                        ),
-                      );
-                    },
-                  ),
-                ),
-              ],
-            );
-          },
-        )
+  Widget build(BuildContext context) =>
+      _hasPermissions ? _buildGNSSMessagesStream()
+      // _buildGNSSMeasurementStream ()
+      //_buildGNSSSnapshotStream() 
+      
+      
       : _loadingSpinner();
 
   void _startNoFixTimer() {
@@ -141,6 +99,122 @@ class _HomeScreenState extends State<HomeScreen> {
         timeLimit: Duration(minutes: 2),
       ),
     ).listen((_) {}, onError: (_) {});
+  }
+
+  Widget _buildGNSSSnapshotStream() {
+    return StreamBuilder<GnssStatusModel>(
+      stream: _gnss.gnssStatusEvents,
+      builder: (context, snapshot) {
+        if (!snapshot.hasData) {
+          return _timedOut ? _noFixHelp() : _loadingSpinner();
+        }
+
+        final snapshotmodel = snapshot.data!;
+        final count = snapshotmodel.satelliteCount ?? 0;
+        final lresultJSON = snapshotmodel.toJson();
+        debugPrint('GNSS event received: satelliteCount=$count');
+        debugPrint('GNSS event received: json=$lresultJSON');
+
+        return Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Row(
+                children: [
+                  Chip(label: Text('Satellites: $count')),
+                ],
+              ),
+            ),
+            const Divider(height: 1),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                  columns: const [
+                    DataColumn(label: Text('Position')),
+                    DataColumn(label: Text('Data')),
+                  ],
+                  rows: List<DataRow>.generate(
+                    count,
+                    (index) => DataRow(
+                      cells: [
+                        DataCell(Text('$index')),
+                        DataCell(Text(
+                            snapshotmodel.status![index].toJson().toString())),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildGNSSMeasurementStream() {
+    return StreamBuilder<GnssMeasurementModel>(
+      stream: _gnss.gnssMeasurementEvents,
+      builder: (context, measurements) {
+        if (!measurements.hasData) {
+          return _timedOut ? _noFixHelp() : _loadingSpinner();
+        }
+
+        final measurementsmodel = measurements.data!;
+        final count = measurementsmodel.contents ?? 0;
+        final lresultJSON = measurementsmodel.toJson();
+        debugPrint('GNSS Measurement received: satelliteCount=$count');
+        debugPrint('GNSS Measurement received: json=$lresultJSON');
+
+        return Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Row(
+                children: [
+                  Chip(label: Text('Satellites: $count')),
+                ],
+              ),
+            ),
+            const Divider(height: 1),
+            Expanded(
+              child: SingleChildScrollView(
+                scrollDirection: Axis.horizontal,
+                child: DataTable(
+                  columns: const [
+                    DataColumn(label: Text('Position')),
+                    DataColumn(label: Text('Data')),
+                  ],
+                  rows: List<DataRow>.generate(
+                    count,
+                    (index) => DataRow(
+                      cells: [
+                        DataCell(Text('$index')),
+                        DataCell(Text(measurementsmodel.measurements![index]
+                            .toJson()
+                            .toString())),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+  Widget _buildGNSSMessagesStream() {
+    return StreamBuilder<dynamic>(
+        stream: _gnss.gnssNavigationMessageEvents,
+        builder: (context, navmessages) {
+          final lresultJSON = navmessages;
+          debugPrint('GNSS Messages received: json=$lresultJSON');
+
+          return Text(lresultJSON.toString());
+        });
   }
 
   Widget _loadingSpinner() => const Center(child: CircularProgressIndicator());

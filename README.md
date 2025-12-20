@@ -30,6 +30,10 @@ raw_gnss allows you to easily fetch the GNSSMeasurementEvents, GNSSNavigationMes
   RawGnss().gnssStatusEvents.listen((e) {});
 ```
 
+## Platform Support
+
+⚠️ **Android Only** - This plugin currently supports Android 7.0+ only. iOS and macOS are not supported as they do not expose raw GNSS APIs.
+
 ### Example: Fetch GNSSMeasurementModels
 ```dart
   StreamBuilder<GnssMeasurementModel>(
@@ -51,5 +55,3 @@ raw_gnss allows you to easily fetch the GNSSMeasurementEvents, GNSSNavigationMes
     stream: RawGnss().gnssMeasurementEvents,
   ),
 ```
-
-iOS does not yet expose raw location data, hence this plugin does not support iOS as of yet.
