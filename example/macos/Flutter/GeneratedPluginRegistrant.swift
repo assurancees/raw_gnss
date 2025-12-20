@@ -7,7 +7,7 @@ import Foundation
 
 import geolocator_apple
 import location
-import raw_gnss
+import raw_gnss_2025
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   GeolocatorPlugin.register(with: registry.registrar(forPlugin: "GeolocatorPlugin"))

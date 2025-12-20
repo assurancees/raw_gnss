@@ -2,8 +2,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:raw_gnss/gnss_status_model.dart';
-import 'package:raw_gnss/raw_gnss.dart';
+import 'package:raw_gnss_2025/gnss_status_model.dart';
+import 'package:raw_gnss_2025/raw_gnss.dart';
 
 void main() {
   runApp(const MyApp());

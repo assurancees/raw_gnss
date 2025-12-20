@@ -1,7 +1,7 @@
-name: raw_gnss
-description: Get Raw GNSS Data Points for Android on Flutter
+name: raw_gnss_2025 
+description: Get Raw GNSS Data Points for Android on Flutter - Originated code from raw_gnss by Deven Joshi
 version: 2.0.0
-homepage: https://www.github.com/deven98/raw_gnss
+homepage: https://www.github.com/assurancees/raw_gnss
 
 environment:
   sdk: '>=3.4.4 <4.0.0'
@@ -27,7 +27,7 @@ flutter:
   plugin:
     platforms:
       android:
-        package: dev.joshi.raw_gnss
+        package: dev.assurancees.raw_gnss_2025
         pluginClass: RawGnssPlugin
       ios:
         pluginClass: RawGnssPlugin

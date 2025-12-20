@@ -1,4 +1,4 @@
-package dev.joshi.raw_gnss
+package dev.assurancees.raw_gnss_2025
 
 import android.content.Context
 import android.location.LocationManager
@@ -12,9 +12,9 @@ import io.flutter.plugin.common.EventChannel
 class RawGnssPlugin : FlutterPlugin {
 
     companion object {
-        private const val GNSS_MEASUREMENT_CHANNEL_NAME = "dev.joshi.raw_gnss/gnss_measurement"
-        private const val GNSS_NAVIGATION_MESSAGE_CHANNEL_NAME = "dev.joshi.raw_gnss/gnss_navigation_message"
-        private const val GNSS_STATUS_CHANNEL_NAME = "dev.joshi.raw_gnss/gnss_status"
+        private const val GNSS_MEASUREMENT_CHANNEL_NAME = "dev.assurancees.raw_gnss_2025/gnss_measurement"
+        private const val GNSS_NAVIGATION_MESSAGE_CHANNEL_NAME = "dev.assurancees.raw_gnss_2025/gnss_navigation_message"
+        private const val GNSS_STATUS_CHANNEL_NAME = "dev.assurancees.raw_gnss_2025/gnss_status"
     }
 
     private var gnssMeasurementChannel: EventChannel? = null

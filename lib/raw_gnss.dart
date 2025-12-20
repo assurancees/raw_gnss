@@ -1,21 +1,21 @@
 import 'dart:async';
 
 import 'package:flutter/services.dart';
-import 'package:raw_gnss/gnss_measurement_model.dart';
-import 'package:raw_gnss/gnss_status_model.dart';
+import 'package:raw_gnss_2025/gnss_measurement_model.dart';
+import 'package:raw_gnss_2025/gnss_status_model.dart';
 
 class RawGnss {
   /// This channel hooks onto the stream for GnssMeasurement events
   static const EventChannel _gnssMeasurementEventChannel =
-      EventChannel('dev.joshi.raw_gnss/gnss_measurement');
+      EventChannel('dev.assurancees.raw_gnss_2025/gnss_measurement');
 
   /// This channel hooks onto the stream for GnssNavigationMessage events
   static const EventChannel _gnssNavigationMessageEventChannel =
-      EventChannel('dev.joshi.raw_gnss/gnss_navigation_message');
+      EventChannel('dev.assurancees.raw_gnss_2025/gnss_navigation_message');
 
   /// This channel hooks onto the stream for GnssNavigationMessage events
   static const EventChannel _gnssStatusEventChannel =
-      EventChannel('dev.joshi.raw_gnss/gnss_status');
+      EventChannel('dev.assurancees.raw_gnss_2025/gnss_status');
 
   Stream<GnssMeasurementModel>? _gnssMeasurementEvents;
   Stream? _gnssNavigationMessageEvents;

@@ -272,13 +272,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
-  raw_gnss:
+  raw_gnss_2025:
     dependency: "direct main"
     description:
       path: ".."
       relative: true
     source: path
-    version: "1.1.1"
+    version: "2.0.0"
   sky_engine:
     dependency: transitive
     description: flutter

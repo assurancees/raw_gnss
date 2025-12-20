@@ -23,11 +23,11 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "dev.joshi.raw_gnss_example"
+    namespace "dev.assurancees.raw_gnss_2025_example"
     compileSdkVersion 36
 
     defaultConfig {
-        applicationId "dev.joshi.raw_gnss_example"
+        applicationId "dev.assurancees.raw_gnss_2025_example"
         minSdkVersion 24
         targetSdkVersion 36
         versionCode flutterVersionCode.toInteger()

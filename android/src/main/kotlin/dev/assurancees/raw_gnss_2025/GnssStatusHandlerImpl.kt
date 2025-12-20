@@ -1,4 +1,4 @@
-package dev.joshi.raw_gnss
+package dev.assurancees.raw_gnss_2025
 
 import android.location.GnssStatus
 import android.location.LocationManager

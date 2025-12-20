@@ -1,4 +1,4 @@
-package dev.joshi.raw_gnss
+package dev.assurancees.raw_gnss_2025
 
 import android.location.GnssClock
 import android.location.GnssMeasurement

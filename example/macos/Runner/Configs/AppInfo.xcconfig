@@ -8,7 +8,7 @@
 PRODUCT_NAME = raw_gnss_example
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = dev.joshi.rawGnss
+PRODUCT_BUNDLE_IDENTIFIER = dev.assurancees.rawGnss
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2020 dev.joshi. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2020 dev.assurancees. All rights reserved.
