@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/khussain/flutter/packages/flutter_tools/gradle/src/main/scripts/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/khussain/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/khussain/Desktop/projects/raw_gnss/example/android/app/.cxx/debug/5s512v5i/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/khussain/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/khussain/Desktop/projects/raw_gnss/example/android/app/.cxx/debug/5s512v5i/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}

@@ -1,0 +1,2 @@
+/Users/khussain/Desktop/projects/raw_gnss/example/android/app/.cxx/debug/5s512v5i/arm64-v8a/CMakeFiles/edit_cache.dir
+/Users/khussain/Desktop/projects/raw_gnss/example/android/app/.cxx/debug/5s512v5i/arm64-v8a/CMakeFiles/rebuild_cache.dir
