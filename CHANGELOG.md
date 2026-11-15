@@ -1,5 +1,5 @@
 ## 3.0.0
-- Migrated Android builds to AGP 9.5.1, Gradle 9.6.1, and built-in Kotlin
+- Updated Android builds to AGP 8.13.2, Gradle 8.14.3, and Kotlin 2.4.21
 - Raised minimum supported Flutter and Dart versions to 3.47 and 3.13
 
 ## 2.0.1

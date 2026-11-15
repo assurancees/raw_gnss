@@ -2,13 +2,15 @@ group 'dev.assurancees.raw_gnss_2025'
 version '1.0'
 
 buildscript {
+    ext.kotlin_version = '2.4.21'
     repositories {
         google()
         mavenCentral()
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:9.5.1'
+        classpath 'com.android.tools.build:gradle:8.13.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
@@ -20,10 +22,11 @@ rootProject.allprojects {
 }
 
 apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
 
 android {
     namespace 'dev.assurancees.raw_gnss_2025'
-    compileSdkVersion 37
+    compileSdkVersion 36
 
     defaultConfig {
         minSdkVersion 24
